@@ -5,5 +5,6 @@ module.exports = {
     src: resolve(root, 'src'),
     temp: resolve(root, '.temp'),
     dist: resolve(root, 'dist'),
-    prepack: resolve(root, '.temp/prepack')
+    prepack: resolve(root, '.temp/prepack'),
+    pages: resolve(root, 'src/pages')
 };

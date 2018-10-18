@@ -9,6 +9,7 @@
     "ssrpack": "webpack --config webpack/webpack.ssr.config.js",
     "test-ssr": "node --harmony webpack/test.js",
     "dev": "node index.js",
+    "ssr":"node index.js",
     "debug": "node --inspect-brk index.js",
     "mocha": "mocha server/utils/test",
     "kstart": "karma start"
