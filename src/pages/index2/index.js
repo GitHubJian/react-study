@@ -14,44 +14,47 @@ class _Index_ extends Component {
         this.state = {
             fetch: false
         };
+
+        this.handleIncrement = this.handleIncrement.bind(this);
     }
 
     componentWillMount() {
-        getStudentById().then(({ code, data }) => {
-            let { student } = data;
-            this.setState({
-                student,
-                fetch: true
+        debugger;
+        getStudentById()
+            .then(({ code, data }) => {
+                let { student } = data;
+                this.setState({
+                    student,
+                    fetch: true
+                });
+            })
+            .catch(e => {
+                console.error(e);
             });
-        });
     }
 
     handleIncrement() {
         let value = this.state.value + 1;
 
-        this.setState({
-            value
-        });
-        debugger;
         increment(value);
     }
 
     render() {
         let { value } = this.props;
 
-        if (this.state.fetch === false) {
-            return null;
-        }
-        debugger;
-        let {
-            student: {
-                name: { first, last }
-            }
-        } = this.state;
+        // if (this.state.fetch === false) {
+        //     return null;
+        // }
+
+        // let {
+        //     student: {
+        //         name: { first, last }
+        //     }
+        // } = this.state;
 
         return (
             <div>
-                Hello, {last}
+                Hello, world
                 <span onClick={this.handleIncrement()}> + </span>
                 <span>
                     Value:
@@ -77,15 +80,14 @@ function mapDispatchToProps(dispatch, ownProps) {
     };
 }
 
-const Index = connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(_Index_);
 
-const Root = () => (
-    <Provider store={store}>
-        <Index />
-    </Provider>
-);
-
-ReactDOM.render(<Root />, document.getElementById('app'));
+// const Root = () => (
+//     <Provider store={store}>
+//         <Index />
+//     </Provider>
+// );
+// ReactDOM.render(<Root />, document.getElementById('app'));

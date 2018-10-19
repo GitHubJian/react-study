@@ -27,7 +27,7 @@ function start() {
         next();
     });
     // 路由
-    app.use('/', routers);
+    // app.use('/', routers);
 
     app.listen(8419, () => {
         console.log(`✨ 服务以启动：http://localhost:8419`);

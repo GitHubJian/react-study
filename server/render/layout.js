@@ -11,7 +11,7 @@ module.exports = function(content, initState) {
                 <script>window.__INITIAL_STATE__ =${JSON.stringify(
                     initState
                 )}</script>
-                <script type="text/javascript" src="/static/js/main.js"></script>
+                <!--script type="text/javascript" src="/static/js/main.js"></script-->
             </body>
         </html>
     `;

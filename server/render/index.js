@@ -23,6 +23,7 @@ const getMatch = (routesArray, url) => {
 };
 
 module.exports = async function(req, res, next) {
+    debugger;
     const { store, history } = getCreateStore(req);
     const branch = matchRoutes(router, req.url);
     const promises = branch.map(({ route }) => {

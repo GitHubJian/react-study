@@ -9,14 +9,17 @@ require('babel-register')({
         'transform-runtime'
     ]
 });
-const { pathConfig } = require('./../config');
+const {
+    pathConfig,
+    serverConfig: { port, host }
+} = require('./../config');
 const express = require('express');
 //const favicon = require('serve-favicon');
 // const cookieParser = require('cookie-parser');
 // const bodyParser = require('body-parser');
 // const compression = require('compression');
 const rootPath = process.cwd();
-const routers = require('./routers');
+const routers = require('./routers/router.ssr.js');
 const path = require('path');
 const app = express();
 
@@ -42,8 +45,8 @@ function start() {
     });
     // 路由
 
-    app.listen(8419, () => {
-        console.log(`✨ 服务以启动：http://localhost:8419`);
+    app.listen(port, host, () => {
+        console.log(`✨ 服务以启动：http://${host.toString()}:${port}`);
     });
 }
 
