@@ -1,14 +1,17 @@
+const { pathConfig } = require('./../../config');
+const path = require('path');
+
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const { StaticRouter } = require('react-router-dom');
 const { Provider } = require('react-redux');
-const { ConnectedRouter, routerMiddleware } = require('react-router-redux');
-const { matchRoutes, renderRoutes } = require('react-router-config');
+const { matchRoutes } = require('react-router-config');
 const { matchPath } = require('react-router-dom');
 const getCreateStore = require('./store');
 //前端路由
-const router = '';
+const router = require(path.resolve(pathConfig.pages, 'router.js'));
 const layout = require('./layout');
+const App = require(path.resolve(pathConfig.pages, 'index2'));
 
 const getMatch = (routesArray, url) => {
     return routesArray.some(router =>
@@ -21,6 +24,7 @@ const getMatch = (routesArray, url) => {
 
 module.exports = async function(req, res, next) {
     const { store, history } = getCreateStore(req);
+    debugger;
     const branch = matchRoutes(router, req.url);
     const promises = branch.map(({ route }) => {
         const fetch = route.component.fetch;
@@ -32,18 +36,23 @@ module.exports = async function(req, res, next) {
     });
 
     let isMatch = getMatch(router, req.url);
+    debugger;
     if (!isMatch) {
         await next();
     } else {
         const html = ReactDOMServer.renderToString(
             <Provider store={store}>
-                <StaticRouter location={ctx.url} context={{}}>
+                <StaticRouter location={req.url} context={{}}>
                     <App />
                 </StaticRouter>
             </Provider>
         );
+        // const html = 'hello,world';
+
         let initState = store.getState();
         const body = layout(html, initState);
+
         res.send(body);
+        res.end();
     }
 };

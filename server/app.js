@@ -3,7 +3,11 @@ require('babel-polyfill');
 // react 的转码 hook
 require('babel-register')({
     presets: ['react'],
-    plugins: ['add-module-exports']
+    plugins: [
+        'add-module-exports',
+        'transform-es2015-modules-commonjs',
+        'transform-runtime'
+    ]
 });
 const { pathConfig } = require('./../config');
 const express = require('express');

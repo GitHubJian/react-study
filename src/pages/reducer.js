@@ -3,7 +3,9 @@ import index1 from './index1/reducer/index.js';
 
 import { combineReducers } from 'redux';
 
-export default combineReducers({
+const reducers = combineReducers({
     index,
     index1
 });
+
+export default reducers;

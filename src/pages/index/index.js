@@ -27,6 +27,8 @@ class Index extends React.Component {
         let { value, Increment, Decrement } = this.props;
         let { student } = this.state;
 
+        return <div>Hello, world</div>;
+
         return (
             <div>
                 <div />
