@@ -1,12 +1,22 @@
-export const Increment = Symbol('Increment');
-export const Decrement = Symbol('Decrement');
+const type = {
+    Increment: Symbol('Increment'),
+    Decrement: Symbol('Decrement'),
+    Student: Symbol('Student')
+};
+
+export { type };
 
 export const increment = data => ({
-    type: Increment,
+    type: type.Increment,
     data
 });
 
 export const decrement = data => ({
-    type: Decrement,
+    type: type.Decrement,
+    data
+});
+
+export const student = data => ({
+    type: type.Student,
     data
 });

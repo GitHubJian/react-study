@@ -10,7 +10,6 @@ module.exports = function(config) {
             let restPath = pathArr.slice(3, -1).join('/');
             let methodName = pathArr.pop();
             let filePath = join(root, `mock/${restPath}.js`);
-            debugger;
             console.log(filePath);
 
             if (!existsSync(filePath)) {

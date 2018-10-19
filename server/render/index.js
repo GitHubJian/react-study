@@ -24,7 +24,6 @@ const getMatch = (routesArray, url) => {
 
 module.exports = async function(req, res, next) {
     const { store, history } = getCreateStore(req);
-    debugger;
     const branch = matchRoutes(router, req.url);
     const promises = branch.map(({ route }) => {
         const fetch = route.component.fetch;
@@ -36,7 +35,6 @@ module.exports = async function(req, res, next) {
     });
 
     let isMatch = getMatch(router, req.url);
-    debugger;
     if (!isMatch) {
         await next();
     } else {
